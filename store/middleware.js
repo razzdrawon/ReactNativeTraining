@@ -12,9 +12,8 @@ const fetchFilmsMiddleware = ({dispatch, getState}) => next => action => {
     .then(films => {
 
       console.log('films middleware: ', films);
-
       films.map(film => {
-        dispatch({type:"ADD_FILM", film: theFilm});
+        dispatch({type:"ADD_FILM", film: film});
       });
 
     })
