@@ -13,7 +13,7 @@ export default class App extends React.Component {
     console.log('state: ', this.state);
     return (
       <View style={styles.container}>
-        <Landing></Landing>
+        <Landing films={this.state.films}></Landing>
       </View>
     );
   }
