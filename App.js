@@ -17,6 +17,10 @@ export default class App extends React.Component {
       </View>
     );
   }
+  
+  componentDidMount(){
+    store.dispatch({type:"FETCH_FILMS"});
+  }
 }
 
 const styles = StyleSheet.create({
