@@ -9,7 +9,7 @@ export const Landing = (props) => {
             <Text>tap on a film to see its details and pick a date to see showtimes</Text> */}
             {
                 props.films.map( film => {
-                        return <Text>{film.title}</Text>
+                        return <Text key={film.id}>{film.title}</Text>
                     }
                 )
             }
