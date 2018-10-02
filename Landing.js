@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, DatePickerIOS, Button   } from 'react-native';
+import { Text, View, Image, DatePickerIOS, DatePickerAndroid, Button   } from 'react-native';
 import {FilmBrief} from './FilmBrief';
 
 export const Landing = (props) => {
