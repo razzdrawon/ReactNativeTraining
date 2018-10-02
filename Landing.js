@@ -9,11 +9,6 @@ export const Landing = (props) => {
     console.log('films Landing: ', props.films);
     return (
         <View>
-            { Platform.OS === "ios" && <DatePickerIOS date={new Date()} onDateChange={setDate}/> }
-            { Platform.OS === "android" && <Button onPress={pickDate} title="Pick a showing date"/> }
-             
-             
-
             {
                 props.films.map( film => {
                         return (
@@ -26,11 +21,5 @@ export const Landing = (props) => {
     );
 }
 
-function setDate(date){
-    console.log("Selected date", date);
-}
 
-function pickDate(){
-    DatePickerAndroid.open({date:new Date()}) .then( ({month,day,year}) =>
-    setDate(new Date(year,month,day)));
-}
+
