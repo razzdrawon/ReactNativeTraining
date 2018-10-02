@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text, View, Image   } from 'react-native';
+import { Text, View, Image, DatePickerIOS, Button   } from 'react-native';
 import {FilmBrief} from './FilmBrief';
 
 export const Landing = (props) => {
     console.log('films Landing: ', props.films);
     return (
         <View>
-            {/* <Text>Dinner And a Movie</Text>
-            <Text>tap on a film to see its details and pick a date to see showtimes</Text> */}
+
+             <DatePickerIOS date={new Date()} onDateChange={setDate}/>
+             <Button onPress={pickDate} title="Pick a showing date"/>
+
             {
                 props.films.map( film => {
                         return (
@@ -18,4 +20,13 @@ export const Landing = (props) => {
             }
         </View>
     );
+}
+
+function setDate(date){
+    console.log("Selected date", date);
+}
+
+function pickDate(){
+    DatePickerAndroid.open({date:new Date()}) .then( ({month,day,year}) =>
+    setDate(new Date(year,month,day)));
 }
