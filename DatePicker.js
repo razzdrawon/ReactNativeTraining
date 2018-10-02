@@ -12,17 +12,16 @@ export default class DatePicker extends React.Component {
     render() {
         console.log('state: ', this.state);
         return (
-            <View style={styles.container}>
+            <View >
                 <Button onPress={this.showModal} title={"Showing times for " + this.state.selected_date.toDateString()} />
-                { this.state.showIOSPicker  ? <DatePickerIOS date={this.state.selected_date} onDateChange={this.setDate}/> : null }
+                {this.state.showIOSPicker ? <DatePickerIOS date={this.state.selected_date} mode="date" onDateChange={this.setDate} /> : null}
             </View>
         );
       }
 
     showModal= () => {
         if( Platform.OS  === 'ios'){
-            this.setState({ showIOSPicker : !this.state.showIOSPicker });
-            console.log("estado : ", this.state.showIOSPicker);
+            this.setState({ showIOSPicker: !this.state.showIOSPicker });
         }else{
             DatePickerAndroid.open({date:new Date()}) .then( ({month,day,year}) =>
             store.dispatch( {type: "SET_SELECTED_DATE", date:new Date(year, month, day)} )
@@ -33,15 +32,6 @@ export default class DatePicker extends React.Component {
 
      setDate = (date) =>{
         this.setState({ showIOSPicker : false });
-        store.dispatch( {type: "SET_SELECTED_DATE", date:new Date(date.year, date.month, date.day)} );
+        store.dispatch( {type: "SET_SELECTED_DATE", date:date} );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
