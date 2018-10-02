@@ -3,8 +3,9 @@ import { store } from './store/store';
 import { View, DatePickerIOS, Button, DatePickerAndroid, Platform , StyleSheet  } from 'react-native';
 
 export default class DatePicker extends React.Component {
-    constructor(props) { super(props);
-      this.state = {...store.getState()};
+    constructor(props) { 
+        super(props);
+        this.state = {...store.getState()};
     }
 
     static getDerivedStateFromProps(nextProps, prevState) { return { ...store.getState() };}
@@ -17,7 +18,7 @@ export default class DatePicker extends React.Component {
                     {this.state.showIOSPicker ? <DatePickerIOS date={this.state.selected_date} mode="date" onDateChange={this.setDate} /> : null}
                 </View>
         );
-      }
+    }
 
     showModal= () => {
         if( Platform.OS  === 'ios'){

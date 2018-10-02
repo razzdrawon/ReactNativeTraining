@@ -18,7 +18,7 @@ export default class App extends React.Component {
           barStyle='light-content'
           hidden='true'
         />
-        <Landing films={this.state.films} selected_film={this.state.selected_film}></Landing>
+        <Landing films={this.state.films} selected_film={this.state.selected_film} show_film={this.state.showFilmDetails}></Landing>
       </View>
     );
   }
