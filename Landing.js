@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Image   } from 'react-native';
+import {FilmBrief} from './FilmBrief';
 
 export const Landing = (props) => {
     console.log('films Landing: ', props.films);
@@ -10,11 +11,7 @@ export const Landing = (props) => {
             {
                 props.films.map( film => {
                         return (
-                            <View>
-                                <Text key={film.id}>{film.title}</Text>
-                                <Image source={{uri:`http://localhost:5000/${film.poster_path}`}} style={{height: 100, width: 100}} />
-                            </View>
-                        
+                            <FilmBrief film={film.title} key={film.id} image= {film.poster_path} />
                         )
                     }
                 )
