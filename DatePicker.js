@@ -12,10 +12,10 @@ export default class DatePicker extends React.Component {
     render() {
         console.log('state: ', this.state);
         return (
-            <View >
-                <Button onPress={this.showModal} title={"Showing times for " + this.state.selected_date.toDateString()} />
-                {this.state.showIOSPicker ? <DatePickerIOS date={this.state.selected_date} mode="date" onDateChange={this.setDate} /> : null}
-            </View>
+                <View >
+                    <Button onPress={this.showModal} title={"Showing times for " + this.state.selected_date.toDateString()} />
+                    {this.state.showIOSPicker ? <DatePickerIOS date={this.state.selected_date} mode="date" onDateChange={this.setDate} /> : null}
+                </View>
         );
       }
 
