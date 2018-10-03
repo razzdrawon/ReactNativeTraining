@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, StatusBar, View } from 'react-native';
 import  Landing  from './Landing';
+import  Checkout  from './Checkout';
 import { store } from './store/store';
 
 export default class App extends React.Component {
@@ -16,11 +17,12 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <StatusBar
           barStyle='light-content'
-          hidden='true'
+          hidden={true}
         />
         <Landing films={this.state.films} selected_film={this.state.selected_film} 
                   showFilmDetails={this.state.showFilmDetails}>
         </Landing>
+        {/* <Checkout/> */}
       </View>
     );
   }
