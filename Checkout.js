@@ -1,6 +1,7 @@
 import React from 'react';
 import { store } from './store/store';
 import { TouchableHighlight, Text,TextInput,Button, View, Image,SafeAreaView, ScrollView,KeyboardAvoidingView } from 'react-native';
+import { Title } from './Title';
 
 export default class Checkout extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ export default class Checkout extends React.Component {
             
             <ScrollView>
                 <View>
-                    <Text>We are Checking Out</Text>
+                    <Title>We are Checking Out</Title>
 
                     <Text>Last Name</Text>
                     <TextInput style={{height: 40, borderColor: 'red', borderWidth: 1}} />

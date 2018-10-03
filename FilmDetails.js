@@ -1,7 +1,8 @@
 import React from 'react';
 import { store } from './store/store';
-import { TouchableHighlight, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, TouchableHighlight, Text, View, Image, ScrollView } from 'react-native';
 import ShowingTimes from './ShowingTimes';
+import { Title } from './Title';
 
 export default class FilmDetails extends React.Component {
     constructor(props) {
@@ -16,12 +17,12 @@ export default class FilmDetails extends React.Component {
             <View>
 
                 <View style={viewImage}>
-                        <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={image} />
+                        <Image style={styles.imagesStyle} source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={image} />
                     </View>
 
                 {/* <ScrollView> */}
 
-                    <Text>Showing times for {this.props.selected_date.toDateString()}</Text>
+                    <Title>Showing times for {this.props.selected_date.toDateString()}</Title>
                     <View style={showingTimes}>
                         {
                             showings.map(showing => {
@@ -49,6 +50,15 @@ export default class FilmDetails extends React.Component {
                 {/* <View>
                     <ShowingTimes selected_date={this.props.selected_date} showings={showings} />>
                 </View> */}
+                    <View>
+                        <Text>
+                            Rating: {this.props.film.vote_average}/<Text style={styles.rankingStyle}>10</Text>
+                        </Text>
+                        <Text>
+                            {this.props.film.vote_count} Votes
+                        </Text>
+                    </View>
+                    
             </View>
         );
     }
@@ -73,3 +83,14 @@ const showingTimes = {
     flexWrap: 'wrap',
     justifyContent: 'space-around'
 }
+
+const styles = StyleSheet.create(
+    {
+        rankingStyle:{
+            fontSize: 10
+        },
+        imagesStyle:{
+            resizeMode: 'contain'
+        }
+    }
+);

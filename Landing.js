@@ -1,14 +1,15 @@
 import React from 'react';
-import { Modal, Text, ScrollView, SafeAreaView, View, Image, DatePickerIOS, Button, DatePickerAndroid, Platform } from 'react-native';
+import { StyleSheet, Modal, Text, ScrollView, SafeAreaView, View, Image, DatePickerIOS, Button, DatePickerAndroid, Platform } from 'react-native';
 import FilmBrief from './FilmBrief';
 import FilmDetails from './FilmDetails';
 import DatePicker from './DatePicker';
 import { store } from './store/store';
+import { Title } from './Title';
 
 export default class Landing extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { ...store.getState() };
+        this.state = { ...store.getState()};
     }
 
     render() {
@@ -18,7 +19,7 @@ export default class Landing extends React.Component {
 
                 <View style={container}>
                     <Image source={require('./assets/daam.png')} style={{ height: 50, width: 50 }} />
-                    <Text>Dinner and a movie</Text>
+                    <Title style={styles.statusBar} >Dinner and a movie</Title>
                 </View>
                 <Text>Pick a movie below and a date to see show times</Text>
                 <Modal visible={this.props.showFilmDetails}>
@@ -54,3 +55,9 @@ export default class Landing extends React.Component {
 const container = {
     flexDirection: 'row'
 };
+
+const styles = StyleSheet.create({
+    statusBar: {
+        fontFamily: Platform.OS=='ios'?'Papyrus':'Roboto'
+    }
+})

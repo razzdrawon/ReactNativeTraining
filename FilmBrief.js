@@ -1,6 +1,6 @@
 import React from 'react';
 import { store } from './store/store';
-import { TouchableHighlight, Text, View, Image } from 'react-native';
+import { StyleSheet, TouchableHighlight, Text, View, Image } from 'react-native';
 
 export default class FilmBrief extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ export default class FilmBrief extends React.Component {
         return (
             <TouchableHighlight onPress={()=>this.selectThisFilm(this.props.film)}>
                 <View style={container}>
-                    <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={{ height: 100, width: 100 }} />
+                    <Image style={styles.imagesStyle} source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} />
                     <View key={this.props.key}>
                         <Text>{this.props.film.title}</Text>
                         <Text>{this.props.film.tagline}</Text>
@@ -35,6 +35,16 @@ export default class FilmBrief extends React.Component {
 const container = {
     flexDirection: 'row'
 };
+
+const styles = StyleSheet.create(
+    {
+        imagesStyle:{
+            resizeMode: 'contain',
+            width: 100,
+            height: 150
+        }
+    }
+);
 
 
 
