@@ -1,6 +1,7 @@
 import React from 'react';
 import { store } from './store/store';
-import { TouchableHighlight, Text, View, Image } from 'react-native';
+import { TouchableHighlight, Text, View, Image, ScrollView } from 'react-native';
+import ShowingTimes from './ShowingTimes';
 
 export default class FilmDetails extends React.Component {
     constructor(props) {
@@ -11,41 +12,43 @@ export default class FilmDetails extends React.Component {
     render() {
         console.log('FilmDetails state: ', this.state);
         var showings = require('./assets/showings.json');
-
         return (
             <View>
 
-
                 <View style={viewImage}>
-                    <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={image} />
-                </View>
+                        <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={image} />
+                    </View>
 
-                <Text>Showing times for {this.props.selected_date.toDateString()}</Text>
-                <View style={showingTimes}>
-                {
-                    showings.map(showing =>
+                {/* <ScrollView> */}
+
+                    <Text>Showing times for {this.props.selected_date.toDateString()}</Text>
+                    <View style={showingTimes}>
                         {
-                            let date = new Date(showing.showing_time);
-                            date.toLocaleTimeString('es-MX', {hour: '2-digit', minute: '2-digit'});
-                            return (<Text key={showing.id}> {date.toLocaleTimeString('es-MX', {hour: '2-digit', minute: '2-digit'}) + ' hrs'} </Text>);
+                            showings.map(showing => {
+                                let date = new Date(showing.showing_time);
+                                date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+                                return (<Text key={showing.id}> {date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ' hrs'} </Text>);
+                            }
+                            )
                         }
-                    )
-                }
-                </View>
+                    </View>
 
-                <Text>
-                    Selected Film : {this.props.film.title}
-                </Text>
+                    <Text>
+                        Selected Film : {this.props.film.title}
+                    </Text>
 
-                <Text>
-                    Tagline : {this.props.film.tagline}
-                </Text>
+                    <Text>
+                        Tagline : {this.props.film.tagline}
+                    </Text>
 
-                <Text>
-                    Overview : {this.props.film.overview}
-                </Text>
+                    <Text>
+                        Overview : {this.props.film.overview}
+                    </Text>
 
-                
+                {/* </ScrollView> */}
+                {/* <View>
+                    <ShowingTimes selected_date={this.props.selected_date} showings={showings} />>
+                </View> */}
             </View>
         );
     }
@@ -58,10 +61,10 @@ const image = {
     resizeMode: 'contain'
 };
 
-const viewImage ={
+const viewImage = {
     flex: 1,
     flexBasis: 200
-} 
+}
 
 const test = { flexBasis: 400, flex: 1 };
 
