@@ -15,6 +15,12 @@ export default class Landing extends React.Component {
         console.log('Landing props: ', this.props)
         return (
             <SafeAreaView>
+
+                <View style={container}>
+                    <Image source={require('./assets/daam.png')} style={{ height: 50, width: 50 }} />
+                    <Text>Dinner and a movie</Text>
+                </View>
+                <Text>Pick a movie below and a date to see show times</Text>
                 <Modal visible={this.props.showFilmDetails}>
                 <SafeAreaView>
                     <View>
@@ -30,17 +36,21 @@ export default class Landing extends React.Component {
                             this.props.films.map(film => {
                                 return (
                                     <FilmBrief film={film} key={film.id} isSelected='true' />
+
                                 )
                             }
                             )
                         }
-                    </View>
+                        )
+                    }
+                </View>
                 </ScrollView>
-            </SafeAreaView>
+            </SafeAreaView >
 
         );
     }
 }
 
-
-
+const container = {
+    flexDirection: 'row'
+};
