@@ -14,30 +14,36 @@ export default class Landing extends React.Component {
         console.log('Landing props: ', this.props)
         return (
             <SafeAreaView>
-                <Modal visible={this.props.showFilmDetails}>
-                    <View>
-                        <Text>Just Something to see</Text>
-                        <Button onPress={()=>store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
-                    </View>
-                </Modal>
-                <ScrollView>
-                    <View>
-                        <DatePicker />
-                        {
-                            this.props.films.map(film => {
-                                return (
-                                    <FilmBrief film={film.title} key={film.id} isSelected='true' image={film.poster_path} />
-                                )
-                            }
+                <View style={container}>
+                    <Image source={require('./assets/daam.png')} style={{ height: 50, width: 50 }} />
+                    <Text>Dinner and a movie</Text>
+                </View>
+                <Text>Pick a movie below and a date to see show times</Text>
+            <Modal visible={this.props.showFilmDetails}>
+                <View>
+                    <Text>Just Something to see</Text>
+                    <Button onPress={() => store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
+                </View>
+            </Modal>
+            <ScrollView>
+                <View>
+                    <DatePicker />
+                    {
+                        this.props.films.map(film => {
+                            return (
+                                <FilmBrief film={film} key={film.id} isSelected='true' image={film.poster_path} />
                             )
                         }
-                    </View>
-                </ScrollView>
-            </SafeAreaView>
+                        )
+                    }
+                </View>
+            </ScrollView>
+            </SafeAreaView >
 
         );
     }
 }
 
-
-
+const container = {
+    flexDirection: 'row'
+};

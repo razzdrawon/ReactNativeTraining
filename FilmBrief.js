@@ -9,12 +9,15 @@ export default class FilmBrief extends React.Component {
     }
 
     render() {
-        console.log('state: ', this.state);
+        console.log('props: ', this.props.film);
         return (
             <TouchableHighlight onPress={this.selectThisFilm}>
-                <View>
-                    <Text key={this.props.key}>{this.props.film}</Text>
+                <View style={container}>
                     <Image source={{ uri: `http://localhost:5000/${this.props.image}` }} style={{ height: 100, width: 100 }} />
+                    <View key={this.props.key}>
+                        <Text>{this.props.film.title}</Text>
+                        <Text>{this.props.film.tagline}</Text>
+                    </View>
                 </View>
             </TouchableHighlight>
         );
@@ -28,6 +31,11 @@ export default class FilmBrief extends React.Component {
 
 
 }
+
+const container = {
+    flexDirection: 'row'
+};
+
 
 
 
