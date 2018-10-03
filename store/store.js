@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux'; import { reducer } from '.
 import middlewares from './middleware.js';
 
 const initialState = { films: [],
-    selected_date: new Date(), selected_film: {},
+    selected_date: new Date(), selected_film: {},showFilmDetails: false
 };
 
 

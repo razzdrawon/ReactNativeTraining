@@ -9,7 +9,7 @@ export const reducer = (state, action) => {
         case "HIDE_FILM_DETAILS":
             return { ...state, showFilmDetails: false };
         case "SHOW_FILM_DETAILS":
-            return { ...state, selected_film: true };
+            return { ...state, showFilmDetails: true };
         default:
             return state;
     }
