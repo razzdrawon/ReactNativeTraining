@@ -14,12 +14,12 @@ export default class Landing extends React.Component {
         console.log('props: ', this.props)
         return (
             <SafeAreaView>
-                <Modal visible={this.props.showFilmDetails}>
+                {/* <Modal visible={this.props.showFilmDetails}>
                     <View>
                         <Text>Just Something to see</Text>
-                        <Button onPress={store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
+                        <Button onPress={()=>store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
                     </View>
-                </Modal>
+                </Modal> */}
                 <ScrollView>
                     <View>
                         <DatePicker />
