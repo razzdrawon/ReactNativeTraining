@@ -9,11 +9,12 @@ export default class FilmBrief extends React.Component {
     }
 
     render() {
-        console.log('props: ', this.props.film);
+
+
         return (
-            <TouchableHighlight onPress={this.selectThisFilm}>
+            <TouchableHighlight onPress={()=>this.selectThisFilm(this.props.film)}>
                 <View style={container}>
-                    <Image source={{ uri: `http://localhost:5000/${this.props.image}` }} style={{ height: 100, width: 100 }} />
+                    <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={{ height: 100, width: 100 }} />
                     <View key={this.props.key}>
                         <Text>{this.props.film.title}</Text>
                         <Text>{this.props.film.tagline}</Text>
@@ -23,9 +24,8 @@ export default class FilmBrief extends React.Component {
         );
     }
 
-    selectThisFilm = () => {
-        console.log("selected film : ", this.props.film);
-        store.dispatch({ type: "SET_SELECTED_FILM", film: this.props.film });
+    selectThisFilm = (film) => {
+        store.dispatch({ type: "SET_SELECTED_FILM", film: film });
         store.dispatch({ type: "SHOW_FILM_DETAILS" });
     }
 

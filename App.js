@@ -10,7 +10,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state);
+    console.log("Selected film app main", this.state.selected_film);
     return (
       
       <View style={styles.container}>
