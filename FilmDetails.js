@@ -15,27 +15,58 @@ export default class FilmDetails extends React.Component {
         return (
             <View>
 
-                <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={{ height: 100, width: 100 }} />
+
+                <View style={viewImage}>
+                    <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={image} />
+                </View>
+
+                <Text>Showing times for {this.props.selected_date.toDateString()}</Text>
+                <View style={showingTimes}>
+                {
+                    showings.map(showing =>
+                        {
+                            let date = new Date(showing.showing_time);
+                            date.toLocaleTimeString('es-MX', {hour: '2-digit', minute: '2-digit'});
+                            return (<Text key={showing.id}> {date.toLocaleTimeString('es-MX', {hour: '2-digit', minute: '2-digit'}) + ' hrs'} </Text>);
+                        }
+                    )
+                }
+                </View>
 
                 <Text>
                     Selected Film : {this.props.film.title}
                 </Text>
 
                 <Text>
-                   Tagline : {this.props.film.tagline}
+                    Tagline : {this.props.film.tagline}
                 </Text>
 
                 <Text>
-                   Overview : {this.props.film.overview}
+                    Overview : {this.props.film.overview}
                 </Text>
 
-                <Text>Showing times for {this.props.selected_date.toDateString()}</Text> 
-                {
-                    showings.map(showing => 
-                        <Text key={showing.id}> {showing.showing_time} </Text> 
-                    )
-                }
+                
             </View>
         );
     }
+}
+
+const image = {
+    flex: 1,
+    width: undefined,
+    height: undefined,
+    resizeMode: 'contain'
+};
+
+const viewImage ={
+    flex: 1,
+    flexBasis: 200
+} 
+
+const test = { flexBasis: 400, flex: 1 };
+
+const showingTimes = {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
 }

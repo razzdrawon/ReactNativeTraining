@@ -20,11 +20,11 @@ export default class App extends React.Component {
           barStyle='light-content'
           hidden='true'
         />
-        {/* <Landing films={this.state.films} selected_film={this.state.selected_film} 
+        <Landing films={this.state.films} selected_film={this.state.selected_film} 
                   showFilmDetails={this.state.showFilmDetails}>
-        </Landing> */}
+        </Landing>
 
-        <PickSeats></PickSeats>
+        {/* <PickSeats></PickSeats> */}
         </View>
       </ScrollView>
       </SafeAreaView>
