@@ -1,12 +1,13 @@
 import React from 'react';
-import { SafeAreaView, Text, View, Table } from 'react-native';
+import { SafeAreaView, Text, View, ScrollView, Button } from 'react-native';
 import tables from './assets/tables.json';
+import { TableSeats } from './TableSeats';
+
 
 export class PickSeats extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.state = { ...store.getState() };
     }
 
     render(){
@@ -21,15 +22,17 @@ export class PickSeats extends React.Component {
                 <Text>at 3:30</Text>
             </View>
 
-            <Text>{tables[0].theater_id}</Text>
-            {/* {
+            <ScrollView>
+            {/* <TableSeats table={tables[0]}></TableSeats> */}
+            {
                 tables.map(table => {
                     return (
-                        <Text>{table.seat_number}</Text>
+                        <TableSeats table={table}></TableSeats>
                     )
                 })
-            } */}
-
+            }
+            </ScrollView>
+            <Button title='Checkout'></Button>
 
         </SafeAreaView>
         );
