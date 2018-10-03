@@ -11,7 +11,6 @@ export default class DatePicker extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) { return { ...store.getState() };}
 
     render() {
-        console.log('state: ', this.state);
         return (
                 <View >
                     <Button onPress={this.showModal} title={"Showing times for " + this.state.selected_date.toDateString()} />

@@ -9,24 +9,33 @@ export default class FilmDetails extends React.Component {
     }
 
     render() {
-        console.log('state: ', this.state);
+        console.log('FilmDetails state: ', this.state);
+        var showings = require('./assets/showings.json');
+
         return (
             <View>
+
+                <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={{ height: 100, width: 100 }} />
+
+                <Text>
+                    Selected Film : {this.props.film.title}
+                </Text>
+
+                <Text>
+                   Tagline : {this.props.film.tagline}
+                </Text>
+
+                <Text>
+                   Overview : {this.props.film.overview}
+                </Text>
+
                 <Text>Showing times for {this.props.selected_date.toDateString()}</Text> 
                 {
-                    this.props.showings.map(showing => 
+                    showings.map(showing => 
                         <Text key={showing.id}> {showing.showing_time} </Text> 
                     )
                 }
             </View>
         );
     }
-
-    selectThisFilm = () => {
-        console.log("selected film : ", this.props.film);
-        store.dispatch({ type: "SET_SELECTED_FILM", film: this.props.film });
-        store.dispatch({ type: "SHOW_FILM_DETAILS" });
-    }
-
-
 }

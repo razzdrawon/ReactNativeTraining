@@ -9,20 +9,18 @@ export default class FilmBrief extends React.Component {
     }
 
     render() {
-        console.log('state: ', this.state);
         return (
-            <TouchableHighlight onPress={this.selectThisFilm}>
+            <TouchableHighlight onPress={()=>this.selectThisFilm(this.props.film)}>
                 <View>
-                    <Text key={this.props.key}>{this.props.film}</Text>
-                    <Image source={{ uri: `http://localhost:5000/${this.props.image}` }} style={{ height: 100, width: 100 }} />
+                    <Text key={this.props.film.id}>{this.props.film.title}</Text>
+                    <Image source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} style={{ height: 100, width: 100 }} />
                 </View>
             </TouchableHighlight>
         );
     }
 
-    selectThisFilm = () => {
-        console.log("selected film : ", this.props.film);
-        store.dispatch({ type: "SET_SELECTED_FILM", film: this.props.film });
+    selectThisFilm = (film) => {
+        store.dispatch({ type: "SET_SELECTED_FILM", film: film });
         store.dispatch({ type: "SHOW_FILM_DETAILS" });
     }
 
