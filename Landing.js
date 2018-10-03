@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Text, ScrollView, SafeAreaView, View, Image, DatePickerIOS, Button, DatePickerAndroid, Platform } from 'react-native';
 import FilmBrief from './FilmBrief';
+import FilmDetails from './FilmDetails';
 import DatePicker from './DatePicker';
 import { store } from './store/store';
 
@@ -16,7 +17,7 @@ export default class Landing extends React.Component {
             <SafeAreaView>
                 <Modal visible={this.props.showFilmDetails}>
                     <View>
-                        <Text>Just Something to see</Text>
+                        <FilmDetails />
                         <Button onPress={()=>store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
                     </View>
                 </Modal>
