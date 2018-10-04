@@ -11,7 +11,6 @@ export default class FilmDetails extends React.Component {
     }
 
     render() {
-        console.log('FilmDetails state: ', this.state);
         var showings = require('./assets/showings.json');
         return (
             <View>
@@ -22,8 +21,9 @@ export default class FilmDetails extends React.Component {
 
                 {/* <ScrollView> */}
 
-                    <Title>Showing times for {this.props.selected_date.toDateString()}</Title>
-                    <View style={showingTimes}>
+                    <Text style={styles.subHeaderText}>Showing times for {this.props.selected_date.toDateString()}</Text>
+                    <ShowingTimes showings={showings}/>
+                    {/*<View style={showingTimes}>
                         {
                             showings.map(showing => {
                                 let date = new Date(showing.showing_time);
@@ -32,7 +32,7 @@ export default class FilmDetails extends React.Component {
                             }
                             )
                         }
-                    </View>
+                    </View>*/}
 
                     <Text>
                         Selected Film : {this.props.film.title}
@@ -91,6 +91,12 @@ const styles = StyleSheet.create(
         },
         imagesStyle:{
             resizeMode: 'contain'
+        },
+        subHeaderText:{
+            fontSize: 15,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            margin: 15
         }
     }
 );

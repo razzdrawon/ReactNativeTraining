@@ -1,6 +1,6 @@
 import React from 'react';
 import { store } from './store/store';
-import { TouchableHighlight, Text, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, TouchableHighlight, Text, View, Image, ScrollView } from 'react-native';
 
 export default class ShowingTimes extends React.Component {
     constructor(props) {
@@ -11,14 +11,33 @@ export default class ShowingTimes extends React.Component {
     render() {
 
         return (
-                <View>
-                    <Text>Showing times for {this.props.selected_date.toDateString()}</Text> 
+                <View style={styles.showingTimes}>
                     {
-                        this.props.showings.map(showing => 
-                            <Text key={showing.id}> {showing.showing_time} </Text> 
+                        this.props.showings.map(showing => {
+                            let date = new Date(showing.showing_time);
+                            date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+                            return (<Text key={showing.id}> {date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ' hrs'} </Text>);
+                        }
                         )
                     }
-            </View>
+                </View>
         );
-    }
+    }   
 }
+
+const styles = StyleSheet.create(
+    {
+        showingTimes: {
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around',
+            margin: 10
+        },
+        subHeaderText:{
+            fontSize: 15,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            margin: 15
+        }
+    }
+);

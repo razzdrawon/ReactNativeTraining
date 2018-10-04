@@ -13,9 +13,8 @@ export default class Landing extends React.Component {
     }
 
     render() {
-        console.log('Landing props: ', this.props)
         return (
-            <SafeAreaView>
+            <SafeAreaView style={styles.layout}>
 
                 <View style={container}>
                     <Image source={require('./assets/daam.png')} style={{ height: 50, width: 50 }} />
@@ -59,5 +58,8 @@ const container = {
 const styles = StyleSheet.create({
     statusBar: {
         fontFamily: Platform.OS=='ios'?'Papyrus':'Roboto'
+    },
+    layout: {
+        margin: 10
     }
 })

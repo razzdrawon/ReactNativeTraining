@@ -10,7 +10,6 @@ export class TableSeats extends React.Component {
     }
 
     render() {
-        console.log(this.props.table);
         return (
             <SafeAreaView>
                 <Card>

@@ -1,17 +1,17 @@
 const fetchFilmsMiddleware = ({dispatch, getState}) => next => action => {
 
-  console.log('action type: ', action.type, getState());
+  //console.log('action type: ', action.type, getState());
   const url = `http://localhost:5000/api/films`;
 
   if(action.type === 'FETCH_FILMS')
   {
-    console.log(action.type);
+    //console.log(action.type);
     
     fetch(url)
     .then(res => res.json())
     .then(films => {
 
-      console.log('films middleware: ', films);
+      //console.log('films middleware: ', films);
       films.map(film => {
         dispatch({type:"ADD_FILM", film: film});
       });
@@ -20,7 +20,7 @@ const fetchFilmsMiddleware = ({dispatch, getState}) => next => action => {
 
   }
   next(action);
-  console.warn(action.type, getState())
+  //console.warn(action.type, getState())
 };
 
 export default [ fetchFilmsMiddleware ];

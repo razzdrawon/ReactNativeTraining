@@ -14,7 +14,7 @@ export default class App extends React.Component {
   render() {
     console.log("Selected film app main", this.state.selected_film);
     return (
-      <SafeAreaView>
+      <SafeAreaView style={styles.layout}>
         <ScrollView>
       <View style={styles.container}>
         <StatusBar
@@ -43,4 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
+  layout: {
+    margin: 10
+  }
 });
