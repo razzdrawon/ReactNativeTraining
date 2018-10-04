@@ -10,6 +10,9 @@ const routes = {
   Landing: {
     screen: Landing
   },
+  PickSeats: {
+    screen: PickSeats
+  }
 };
 const MyStackNavigator = createStackNavigator(routes, stackNavConfig);
 

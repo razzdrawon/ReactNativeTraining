@@ -16,6 +16,10 @@ export default class Landing extends React.Component {
         store.subscribe(() => this.setState(store.getState()));
     }
 
+    chooseTime = showing => { 
+        this.props.navigation.navigate('PickSeats', { showing });
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.layout}>
@@ -28,7 +32,7 @@ export default class Landing extends React.Component {
                 <Modal visible={this.state.showFilmDetails}>
                 <SafeAreaView>
                     <View>
-                        <FilmDetails film = {this.state.selected_film} selected_date= {this.state.selected_date}/>
+                        <FilmDetails film={this.state.selected_film} selected_date={this.state.selected_date} chooseTime={this.chooseTime}/>
                         <Button onPress={()=>store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
                     </View>
                     </SafeAreaView>
@@ -67,3 +71,4 @@ const styles = StyleSheet.create({
         margin: 10
     }
 })
+

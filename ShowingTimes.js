@@ -16,7 +16,11 @@ export default class ShowingTimes extends React.Component {
                         this.props.showings.map(showing => {
                             let date = new Date(showing.showing_time);
                             date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
-                            return (<Text key={showing.id}> {date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ' hrs'} </Text>);
+                            return (
+                                <Text key={showing.id} onPress={() => this.props.chooseTime(showing)}> 
+                                    {date.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) + ' hrs'} 
+                                </Text>
+                            );
                         }
                         )
                     }

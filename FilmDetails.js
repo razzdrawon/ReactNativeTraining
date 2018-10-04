@@ -20,9 +20,9 @@ export default class FilmDetails extends React.Component {
                     </View>
 
                 {/* <ScrollView> */}
-
+                {console.log(this.props)}
                     <Text style={styles.subHeaderText}>Showing times for {this.props.selected_date.toDateString()}</Text>
-                    <ShowingTimes showings={showings}/>
+                    <ShowingTimes showings={showings} chooseTime={this.props.chooseTime}/>
                     {/*<View style={showingTimes}>
                         {
                             showings.map(showing => {

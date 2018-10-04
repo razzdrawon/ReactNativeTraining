@@ -2,16 +2,18 @@ import React from 'react';
 import { SafeAreaView, Text, View, ScrollView, Button } from 'react-native';
 import tables from './assets/tables.json';
 import { TableSeats } from './TableSeats';
+import { store } from './store/store';
 
 
 export class PickSeats extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
+        this.state = { ...store.getState()};
+        store.subscribe(() => this.setState(store.getState()));
     }
 
     render(){
-        console.log(tables[0].id);
         return (
         <SafeAreaView>
             <View>
