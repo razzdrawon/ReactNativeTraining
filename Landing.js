@@ -7,24 +7,28 @@ import { store } from './store/store';
 import { Title } from './Title';
 
 export default class Landing extends React.Component {
-    constructor(props) {
-        super(props);
+
+    static navigationOptions = { header: null,
+    };
+    constructor() {
+        super();
         this.state = { ...store.getState()};
+        store.subscribe(() => this.setState(store.getState()));
     }
 
     render() {
         return (
             <SafeAreaView style={styles.layout}>
-
+            
                 <View style={container}>
                     <Image source={require('./assets/daam.png')} style={{ height: 50, width: 50 }} />
                     <Title style={styles.statusBar} >Dinner and a movie</Title>
                 </View>
                 <Text>Pick a movie below and a date to see show times</Text>
-                <Modal visible={this.props.showFilmDetails}>
+                <Modal visible={this.state.showFilmDetails}>
                 <SafeAreaView>
                     <View>
-                        <FilmDetails film = {this.props.selected_film} selected_date= {this.state.selected_date}/>
+                        <FilmDetails film = {this.state.selected_film} selected_date= {this.state.selected_date}/>
                         <Button onPress={()=>store.dispatch({ type: "HIDE_FILM_DETAILS" })} title="Done" />
                     </View>
                     </SafeAreaView>
@@ -33,16 +37,16 @@ export default class Landing extends React.Component {
                     <View>
                         <DatePicker />
                         {
-                            this.props.films.map(film => {
-                                return (
-                                    <FilmBrief film={film} key={film.id} isSelected='true' />
+                            
+                            this.state.films.map(film => {
+                                console.log()
+                                    return (
+                                        <FilmBrief film={film} key={film.id} isSelected='true' />
 
-                                )
-                            }
+                                    )
+                                }
                             )
                         }
-                        )
-                    }
                 </View>
                 </ScrollView>
             </SafeAreaView >

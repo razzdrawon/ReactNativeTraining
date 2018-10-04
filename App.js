@@ -4,6 +4,27 @@ import  Landing  from './Landing';
 import  Checkout  from './Checkout';
 import { store } from './store/store';
 import { PickSeats } from './PickSeats';
+import { createStackNavigator } from 'react-navigation';
+
+const routes = { 
+  Landing: {
+    screen: Landing
+  },
+};
+const MyStackNavigator = createStackNavigator(routes, stackNavConfig);
+
+const stackNavConfig = {
+  initialRouteName: 'Landing', 
+  navigationOptions: () => ({
+    headerStyle: {
+      backgroundColor: 'rgb(0, 1, 78)', // Or whatever color you like
+    },
+    headerTintColor: 'rgb(98, 190, 255)', // For the back/forward buttons 
+    headerTitleStyle: {
+      fontWeight: 'bold', 
+    }
+  }),
+}
 
 export default class App extends React.Component {
   constructor() { super();
@@ -12,22 +33,24 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log("Selected film app main", this.state.selected_film);
     return (
-      <SafeAreaView style={styles.layout}>
-        <ScrollView>
-      <View style={styles.container}>
-        <StatusBar
-          barStyle='light-content'
-          hidden={true}
-        />
-        <Landing films={this.state.films} selected_film={this.state.selected_film} 
-                  showFilmDetails={this.state.showFilmDetails}>
-        </Landing>
-        {/* <PickSeats></PickSeats> */}
-        </View>
-      </ScrollView>
-      </SafeAreaView>
+      // <SafeAreaView style={styles.layout}>
+      //   <ScrollView>
+      // <View style={styles.container}>
+      //   <StatusBar
+      //     barStyle='light-content'
+      //     hidden={true}
+      //   />
+      //   <MyStackNavigator/>
+      //   <Landing films={this.state.films} selected_film={this.state.selected_film} 
+      //             showFilmDetails={this.state.showFilmDetails}>
+      //   </Landing>
+      //   </View>
+      // </ScrollView>
+      // </SafeAreaView>
+
+    <MyStackNavigator/>
+      
 
     );
   }
@@ -47,3 +70,5 @@ const styles = StyleSheet.create({
     margin: 10
   }
 });
+
+

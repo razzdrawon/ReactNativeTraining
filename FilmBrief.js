@@ -15,7 +15,7 @@ export default class FilmBrief extends React.Component {
             <TouchableHighlight onPress={()=>this.selectThisFilm(this.props.film)}>
                 <View style={container}>
                     <Image style={styles.imagesStyle} source={{ uri: `http://localhost:5000/${this.props.film.poster_path}` }} />
-                    <View key={this.props.key}>
+                    <View >
                         <Text>{this.props.film.title}</Text>
                         <Text>{this.props.film.tagline}</Text>
                     </View>
